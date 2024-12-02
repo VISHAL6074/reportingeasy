@@ -66,6 +66,19 @@
     </div>
 
     <script>
+        // Function to format date and time without seconds
+        function getCurrentDateTime() {
+            const now = new Date();
+            return now.toLocaleString('en-US', {
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit',
+                hour: '2-digit',
+                minute: '2-digit',
+                hour12: true
+            });
+        }
+
         // Function to copy text to the clipboard
         function copyToClipboard(text) {
             navigator.clipboard.writeText(text)
@@ -75,14 +88,14 @@
 
         // Event listeners for buttons
         document.getElementById('signInButton').addEventListener('click', () => {
-            const currentDateTime = new Date().toLocaleString();
+            const currentDateTime = getCurrentDateTime();
             const signInText = `Signed in on ${currentDateTime}`;
             copyToClipboard(signInText);
         });
 
         document.getElementById('signOutButton').addEventListener('click', () => {
-            const currentDateTime = new Date().toLocaleString();
-            const signOutText = `Signed out on ${currentDateTime}`;
+            const currentDateTime = getCurrentDateTime();
+            const signOutText = `Signing out for the day on ${currentDateTime}. Wishing everyone a peaceful and productive time ahead. Take care!`;
             copyToClipboard(signOutText);
         });
     </script>
