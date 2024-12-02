@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In & Sign Out</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: white;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            width: 300px;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #2B2437;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            color: white;
+            width: 100%;
+        }
+
+        .sign-in {
+            background-color: #61CE70;
+        }
+
+        .sign-in:hover {
+            background-color: #4CAF50;
+        }
+
+        .sign-out {
+            background-color: #FF6300;
+        }
+
+        .sign-out:hover {
+            background-color: #E85C00;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>User Actions</h1>
+        <button id="signInButton" class="sign-in">Sign In</button>
+        <button id="signOutButton" class="sign-out">Sign Out</button>
+    </div>
+
+    <script>
+        // Function to copy text to the clipboard
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text)
+                .then(() => alert(`Copied to clipboard: ${text}`))
+                .catch(err => console.error('Error copying text: ', err));
+        }
+
+        // Event listeners for buttons
+        document.getElementById('signInButton').addEventListener('click', () => {
+            const currentDateTime = new Date().toLocaleString();
+            const signInText = `Signed in on ${currentDateTime}`;
+            copyToClipboard(signInText);
+        });
+
+        document.getElementById('signOutButton').addEventListener('click', () => {
+            const currentDateTime = new Date().toLocaleString();
+            const signOutText = `Signed out on ${currentDateTime}`;
+            copyToClipboard(signOutText);
+        });
+    </script>
+</body>
+</html>
