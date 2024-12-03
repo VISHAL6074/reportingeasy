@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign In & Sign Out</title>
+    <title>Sign In & Sign Out with Notes</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -22,12 +22,21 @@
             border-radius: 10px;
             padding: 20px;
             text-align: center;
-            width: 300px;
+            width: 350px;
         }
 
         h1 {
             margin-bottom: 20px;
             color: #2B2437;
+        }
+
+        input[type="text"] {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
         }
 
         button {
@@ -61,6 +70,7 @@
 <body>
     <div class="container">
         <h1>User Actions</h1>
+        <input type="text" id="taskInput" placeholder="Enter your task here..." />
         <button id="signInButton" class="sign-in">Sign In</button>
         <button id="signOutButton" class="sign-out">Sign Out</button>
     </div>
@@ -89,13 +99,15 @@
         // Event listeners for buttons
         document.getElementById('signInButton').addEventListener('click', () => {
             const currentDateTime = getCurrentDateTime();
-            const signInText = `Signed in on ${currentDateTime}`;
+            const task = document.getElementById('taskInput').value.trim();
+            const signInText = `Signed in on ${currentDateTime}. Today I will work on: "${task}"`;
             copyToClipboard(signInText);
         });
 
         document.getElementById('signOutButton').addEventListener('click', () => {
             const currentDateTime = getCurrentDateTime();
-            const signOutText = `Signing out for the day on ${currentDateTime}. Wishing everyone a peaceful and productive time ahead. Take care!`;
+            const task = document.getElementById('taskInput').value.trim();
+            const signOutText = `Signing out for the day on ${currentDateTime}. Today I worked on: "${task}". Wishing everyone a peaceful and productive time ahead. Take care!`;
             copyToClipboard(signOutText);
         });
     </script>
