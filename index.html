@@ -92,7 +92,7 @@
         // Function to copy text to the clipboard
         function copyToClipboard(text) {
             navigator.clipboard.writeText(text)
-                .then(() => alert(Copied to clipboard: ${text}))
+                .then(() => alert(`Copied to clipboard: ${text}`))
                 .catch(err => console.error('Error copying text: ', err));
         }
 
@@ -100,14 +100,14 @@
         document.getElementById('signInButton').addEventListener('click', () => {
             const currentDateTime = getCurrentDateTime();
             const task = document.getElementById('taskInput').value.trim();
-            const signInText = Signed *In* on *${currentDateTime}.*  _${task}_;
+            const signInText = `Signed *In* on *${currentDateTime}.*  _${task}_`;
             copyToClipboard(signInText);
         });
 
         document.getElementById('signOutButton').addEventListener('click', () => {
             const currentDateTime = getCurrentDateTime();
             const task = document.getElementById('taskInput').value.trim();
-            const signOutText = Signing *Out* for the day on *${currentDateTime}*. _${task}_.;
+            const signOutText = `Signing *Out* for the day on *${currentDateTime}*. _${task}_.`;
             copyToClipboard(signOutText);
         });
     </script>
