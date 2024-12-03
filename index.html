@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign In & Sign Out with WhatsApp</title>
+    <title>Sign In & Sign Out with Notes</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -89,34 +89,26 @@
             });
         }
 
-        // Function to send text to WhatsApp
-        function sendToWhatsApp(text) {
-            const encodedText = encodeURIComponent(text);
-            const whatsappURL = `whatsapp://send?text=${encodedText}`;
-            window.location.href = whatsappURL; // Redirects to WhatsApp app on the phone
+        // Function to copy text to the clipboard
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text)
+                .then(() => alert(Copied to clipboard: ${text}))
+                .catch(err => console.error('Error copying text: ', err));
         }
 
         // Event listeners for buttons
         document.getElementById('signInButton').addEventListener('click', () => {
             const currentDateTime = getCurrentDateTime();
             const task = document.getElementById('taskInput').value.trim();
-            if (!task) {
-                alert('Please enter a task.');
-                return;
-            }
-            const signInText = `Signed *In* on *${currentDateTime}.*  _${task}_`;
-            sendToWhatsApp(signInText);
+            const signInText = Signed *In* on *${currentDateTime}.*  _${task}_;
+            copyToClipboard(signInText);
         });
 
         document.getElementById('signOutButton').addEventListener('click', () => {
             const currentDateTime = getCurrentDateTime();
             const task = document.getElementById('taskInput').value.trim();
-            if (!task) {
-                alert('Please enter a task.');
-                return;
-            }
-            const signOutText = `Signing *Out* for the day on *${currentDateTime}*. _${task}_.`;
-            sendToWhatsApp(signOutText);
+            const signOutText = Signing *Out* for the day on *${currentDateTime}*. _${task}_.;
+            copyToClipboard(signOutText);
         });
     </script>
 </body>
