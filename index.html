@@ -100,14 +100,14 @@
         document.getElementById('signInButton').addEventListener('click', () => {
             const currentDateTime = getCurrentDateTime();
             const task = document.getElementById('taskInput').value.trim();
-            const signInText = `Signed in on ${currentDateTime}.  "${task}"`;
+            const signInText = `Signed *In* on *${currentDateTime}.*  "${task}"`;
             copyToClipboard(signInText);
         });
 
         document.getElementById('signOutButton').addEventListener('click', () => {
             const currentDateTime = getCurrentDateTime();
             const task = document.getElementById('taskInput').value.trim();
-            const signOutText = `Signing out for the day on ${currentDateTime}. "${task}".`;
+            const signOutText = `Signing *Out* for the day on *${currentDateTime}*. "${task}".`;
             copyToClipboard(signOutText);
         });
     </script>
